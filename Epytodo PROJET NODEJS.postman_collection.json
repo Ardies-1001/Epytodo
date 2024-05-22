@@ -1,0 +1,360 @@
+{
+	"info": {
+		"_postman_id": "442dff06-8124-407c-821e-ef86a34fb5e3",
+		"name": "Epytodo PROJET NODEJS",
+		"description": "Un projet écris en nodeJs et qui regroupe\n\n> Authentification  \nRoutes  \nMiddleware  \nCRUD  \nServer  \nDataBase Connect",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "19372999"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "lebonadjanohoun7@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Anot#3r5phksc@@L1001",
+									"type": "text"
+								},
+								{
+									"key": "firstname",
+									"value": "Ardies",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Lebon",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:3000/register"
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"if (jsonData && jsonData.token) {\r",
+									"    pm.environment.set(\"token\", jsonData.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "lebonadjanohoun7@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Anot#3r5phksc@@L1001",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:3000/login"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "User",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:3000/users/1"
+					},
+					"response": []
+				},
+				{
+					"name": "User information",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:3000/user"
+					},
+					"response": []
+				},
+				{
+					"name": "User",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "test@example.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "firstname",
+									"value": "firstname",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "name",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:3000/users/1"
+					},
+					"response": []
+				},
+				{
+					"name": "User information (by email/id)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:3000/users/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Todos",
+			"item": [
+				{
+					"name": "User todos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:3000/user/todos"
+					},
+					"response": []
+				},
+				{
+					"name": "Todos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:3000/todos"
+					},
+					"response": []
+				},
+				{
+					"name": "Todo",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:3000/todos/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Todo",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:3000/todos/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Todo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "title",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "description",
+									"type": "text"
+								},
+								{
+									"key": "due_time",
+									"value": "2024-05-19 02:24:00",
+									"type": "text"
+								},
+								{
+									"key": "user_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "todo",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:3000/todos"
+					},
+					"response": []
+				},
+				{
+					"name": "Todo",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "title",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "description",
+									"type": "text"
+								},
+								{
+									"key": "due_time",
+									"value": "2024-05-19 02:24:00",
+									"type": "text"
+								},
+								{
+									"key": "user_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "in progress",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:3000/todos/1"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": ""
+		}
+	]
+}

@@ -1,0 +1,9 @@
+var jsonData = pm.response.json();
+if (jsonData && jsonData.token) {
+    pm.environment.set("token", jsonData.token);
+}
+
+c'est le code à ajouter dans le test du login dans postemane pour
+gérer dynamaiquement la récupération du token après connexion
+
+Mais pas besoin de se gêner, importe juste le json : Epytodo PROJET NODEJS.postman_collection.json dans postman
